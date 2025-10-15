@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-DVB-T/T2 Scanner w Pythonie - WERSJA POPRAWIONA (REASSEMBLY)
-- Używa pids=8192 dla maksymalnej kompatybilności z serwerami SAT>IP
-- POPRAWIONA: Logika składania tabel DVB z fragmentów pakietów TS
-- Inteligentnie monitoruje dane w pamięci, aby zakończyć skanowanie, gdy dane są stabilne
-- Skan nie kończy się przed czasem, jeśli nie znalazł żadnych danych
-- Wzmocniony parser SDT do lepszej obsługi nazw kanałów
-- Dodatkowe komunikaty diagnostyczne
+DVB-T/T2 Scanner w Pythonie - WERSJA ULEPSZONA Z PEŁNYM WYKRYWANIEM PIDÓW
+- Pełne wykrywanie PIDów: wideo, audio, napisy, teletekst, EPG, itp.
+- Inteligentne grupowanie PIDów według typu
+- Poprawiona logika składania tabel DVB
+- Generowanie M3U z kompletnymi listami PIDów
+- Ulepszone wykrywanie nazw kanałów z SDT
+- Automatyczne wykrywanie typu kodowania audio
+- Obsługa multipleksów z wieloma usługami
 """
 
 import sys
@@ -18,6 +19,7 @@ from datetime import datetime
 from collections import defaultdict
 from io import BytesIO
 import re
+import json
 
 
 # ============================================================================
@@ -68,7 +70,7 @@ class TSPacket:
 
 
 # ============================================================================
-# PARSERY DVB
+# PARSERY DVB - ULEPSZONE WERSJE
 # ============================================================================
 
 class PATParser:
@@ -105,7 +107,37 @@ class PATParser:
 
 
 class PMTParser:
-    """Parser Program Map Table"""
+    """Parser Program Map Table - ULEPSZONA WERSJA Z PEŁNYM WYKRYWANIEM STRUMIENI"""
+    
+    # Mapowanie typów strumieni
+    STREAM_TYPES = {
+        0x01: ('MPEG-1 Video', 'video'),
+        0x02: ('MPEG-2 Video', 'video'),
+        0x03: ('MPEG-1 Audio', 'audio'),
+        0x04: ('MPEG-2 Audio', 'audio'),
+        0x05: ('Private Sections', 'data'),
+        0x06: ('Private PES Data', 'data'),
+        0x0F: ('MPEG-4 AAC Audio', 'audio'),
+        0x10: ('MPEG-4 Video', 'video'),
+        0x11: ('MPEG-4 LATM AAC Audio', 'audio'),
+        0x13: ('MPEG-4 Text', 'subtitle'),
+        0x1B: ('H.264/AVC Video', 'video'),
+        0x1C: ('MPEG-4 AAC Audio', 'audio'),
+        0x1D: ('MPEG-4 Text', 'subtitle'),
+        0x24: ('H.265/HEVC Video', 'video'),
+        0x80: ('DigiCipher II Video', 'video'),
+        0x81: ('A52/AC-3 Audio', 'audio'),
+        0x82: ('HDMV DTS Audio', 'audio'),
+        0x83: ('LPCM Audio', 'audio'),
+        0x84: ('SDDS Audio', 'audio'),
+        0x86: ('DTS-HD Audio', 'audio'),
+        0x87: ('E-AC-3 Audio', 'audio'),
+        0x8A: ('DTS Audio', 'audio'),
+        0xD1: ('DigiCipher II Audio', 'audio'),
+        0xDA: ('DTS Audio', 'audio'),
+        0xDB: ('Dolby Digital Plus', 'audio'),
+        0xEA: ('VC-1 Video', 'video'),
+    }
     
     def __init__(self):
         self.streams = {}
@@ -119,9 +151,22 @@ class PMTParser:
             return {}
         
         section_length = ((data[1] & 0x0F) << 8) | data[2]
+        program_number = (data[3] << 8) | data[4]
+        version_number = (data[5] >> 1) & 0x1F
+        current_next = data[5] & 0x01
+        
+        if not current_next:
+            return {}
+        
+        pcr_pid = ((data[8] & 0x1F) << 8) | data[9]
         program_info_length = ((data[10] & 0x0F) << 8) | data[11]
+        
         pos = 12 + program_info_length
         streams = defaultdict(list)
+        
+        # Dodaj PCR PID jeśli nie jest zerowy
+        if pcr_pid != 0x1FFF:
+            streams['pcr'].append(pcr_pid)
         
         while pos < min(len(data) - 4, 3 + section_length):
             if pos + 5 > len(data):
@@ -131,14 +176,83 @@ class PMTParser:
             elementary_pid = ((data[pos + 1] & 0x1F) << 8) | data[pos + 2]
             es_info_length = ((data[pos + 3] & 0x0F) << 8) | data[pos + 4]
             
-            streams[stream_type].append(elementary_pid)
+            # Pobierz deskryptory strumienia
+            descriptors = {}
+            if es_info_length > 0 and pos + 5 + es_info_length <= len(data):
+                desc_data = data[pos + 5:pos + 5 + es_info_length]
+                descriptors = self.parse_stream_descriptors(desc_data)
+            
+            # Określ kategorię strumienia
+            stream_info = {
+                'pid': elementary_pid,
+                'type': stream_type,
+                'type_name': self.STREAM_TYPES.get(stream_type, (f'Unknown {stream_type:02X}', 'data'))[0],
+                'category': self.STREAM_TYPES.get(stream_type, (f'Unknown {stream_type:02X}', 'data'))[1],
+                'descriptors': descriptors
+            }
+            
+            # Dodaj do odpowiedniej kategorii
+            category = stream_info['category']
+            streams[category].append(stream_info)
+            
             pos += 5 + es_info_length
         
         return dict(streams)
+    
+    def parse_stream_descriptors(self, data):
+        """Parsuje deskryptory strumienia"""
+        pos = 0
+        descriptors = {}
+        
+        while pos < len(data) - 2:
+            desc_tag = data[pos]
+            desc_length = data[pos + 1]
+            
+            if pos + 2 + desc_length > len(data):
+                break
+            
+            desc_data = data[pos + 2:pos + 2 + desc_length]
+            
+            # Subtitling descriptor (0x59) - napisy DVB
+            if desc_tag == 0x59 and len(desc_data) >= 8:
+                lang = desc_data[0:3].decode('ascii', errors='ignore')
+                sub_type = desc_data[3]
+                composition_page = (desc_data[4] << 8) | desc_data[5]
+                ancillary_page = (desc_data[6] << 8) | desc_data[7]
+                descriptors['subtitle'] = {
+                    'language': lang,
+                    'type': sub_type,
+                    'composition_page': composition_page,
+                    'ancillary_page': ancillary_page
+                }
+            
+            # Teletext descriptor (0x56) - teletekst
+            elif desc_tag == 0x56 and len(desc_data) >= 5:
+                lang = desc_data[0:3].decode('ascii', errors='ignore')
+                teletext_type = desc_data[3]
+                teletext_magazine = desc_data[4] & 0x07
+                teletext_page = (desc_data[4] >> 3) & 0x1F
+                descriptors['teletext'] = {
+                    'language': lang,
+                    'type': teletext_type,
+                    'magazine': teletext_magazine,
+                    'page': teletext_page
+                }
+            
+            # Language descriptor (0x0A) - język audio
+            elif desc_tag == 0x0A and len(desc_data) >= 4:
+                lang = desc_data[0:3].decode('ascii', errors='ignore')
+                audio_type = desc_data[3]
+                descriptors['language'] = lang
+                descriptors['audio_type'] = audio_type
+            
+            pos += 2 + desc_length
+        
+        return descriptors
 
 
 class SDTParser:
-    """Parser Service Description Table - WERSJA ULEPSZONA I BARDZIEJ ODPORNA"""
+    """Parser Service Description Table - WERSJA ULEPSZONA"""
     
     def __init__(self):
         self.services = {}
@@ -195,16 +309,22 @@ class SDTParser:
                     pos_in_desc = 1
                     
                     # Provider name
-                    provider_name_len = desc_data[pos_in_desc]
-                    pos_in_desc += 1
-                    
-                    # Sprawdź, czy jest bajt kodowania znaków
-                    if provider_name_len > 0 and pos_in_desc < len(desc_data) and desc_data[pos_in_desc] < 0x20:
-                        pos_in_desc += 1 # Pomiń bajt kodowania
-                        provider_name_len -= 1
-                    
-                    provider_name = desc_data[pos_in_desc:pos_in_desc + provider_name_len].decode('utf-8', errors='ignore').strip()
-                    pos_in_desc += provider_name_len
+                    if pos_in_desc < len(desc_data):
+                        provider_name_len = desc_data[pos_in_desc]
+                        pos_in_desc += 1
+                        
+                        # Sprawdź, czy jest bajt kodowania znaków
+                        if provider_name_len > 0 and pos_in_desc < len(desc_data) and desc_data[pos_in_desc] < 0x20:
+                            pos_in_desc += 1 # Pomiń bajt kodowania
+                            provider_name_len -= 1
+                        
+                        if pos_in_desc + provider_name_len <= len(desc_data):
+                            provider_name = desc_data[pos_in_desc:pos_in_desc + provider_name_len].decode('utf-8', errors='ignore').strip()
+                            pos_in_desc += provider_name_len
+                        else:
+                            provider_name = ""
+                    else:
+                        provider_name = ""
                     
                     # Service name
                     if pos_in_desc < len(desc_data):
@@ -215,14 +335,20 @@ class SDTParser:
                             pos_in_desc += 1 # Pomiń bajt kodowania
                             service_name_len -= 1
                         
-                        service_name = desc_data[pos_in_desc:pos_in_desc + service_name_len].decode('utf-8', errors='ignore').strip()
-                        
-                        if service_name:
-                            service_info = {
-                                'type': service_type,
-                                'provider': provider_name,
-                                'name': service_name
-                            }
+                        if pos_in_desc + service_name_len <= len(desc_data):
+                            service_name = desc_data[pos_in_desc:pos_in_desc + service_name_len].decode('utf-8', errors='ignore').strip()
+                        else:
+                            service_name = ""
+                    else:
+                        service_name = ""
+                    
+                    if service_name:
+                        service_info = {
+                            'type': service_type,
+                            'provider': provider_name,
+                            'name': service_name
+                        }
+                        break  # Znaleziono nazwę, kończymy
                 except Exception:
                     # Ignoruj błędy parsowania jednego deskryptora, spróbuj z następnym
                     pass
@@ -326,11 +452,11 @@ class NITParser:
 
 
 # ============================================================================
-# SKANER MULTIPLEKSÓW - WERSJA Z POPRAWIONYM REASSEMBLY
+# SKANER MULTIPLEKSÓW - WERSJA Z PEŁNYM WYKRYWANIEM PIDÓW
 # ============================================================================
 
 class MultiplexScanner:
-    """Skaner pojedynczego multipleksu - Z POPRAWIONYM SKŁADANIEM TABEL"""
+    """Skaner pojedynczego multipleksu z pełnym wykrywaniem PIDów"""
     
     PID_PAT = 0x0000
     PID_NIT = 0x0010
@@ -344,23 +470,35 @@ class MultiplexScanner:
     
     def scan_frequency(self, freq_mhz, msys='dvbt2', bw=8, tmode='8k', gi='1/4', 
                        detection_time=5, full_scan_time=20):
-        """Skanuje pojedynczą częstotliwość"""
+        """Skanuje pojedynczą częstotliwość z pełnym wykrywaniem PIDów"""
         print(f"\n📡 Skanowanie: {freq_mhz} MHz ({msys.upper()})")
         
         if not self._detect_signal(freq_mhz, msys, bw, tmode, gi, detection_time):
             print("  ✗ Brak sygnału - częstotliwość pusta")
             return None
         
-        print("  ✓ Sygnał wykryty - rozpoczynam pełny skan (z poprawionym składaniem tabel)")
+        print("  ✓ Sygnał wykryty - rozpoczynam pełny skan z wykrywaniem PIDów")
         
         result = self._full_scan(freq_mhz, msys, bw, tmode, gi, full_scan_time)
         
         if result and result.get('services'):
             print(f"  ✓ Znaleziono {len(result['services'])} stacji")
             for service in result['services'][:3]:
-                print(f"     • {service['name']}")
+                pids_info = []
+                if 'streams' in service:
+                    for category, streams in service['streams'].items():
+                        if isinstance(streams, list) and streams:
+                            pids_info.append(f"{category}:{len(streams)}")
+                        elif isinstance(streams, dict):
+                            for cat, items in streams.items():
+                                if items:
+                                    pids_info.append(f"{cat}:{len(items)}")
+                
+                pids_str = ", ".join(pids_info) if pids_info else "brak PIDów"
+                print(f"     • {service['name']} ({pids_str})")
+            
             if len(result['services']) > 3:
-                print(f"     ... (+{len(result['services']) - 3} więcej)")
+                print(f"     ... (+{len(result['services'])-3} więcej)")
         else:
             print("  ⚠ Sygnał jest, ale brak dekodowalnych stacji")
         
@@ -404,7 +542,7 @@ class MultiplexScanner:
             return False
     
     def _full_scan(self, freq_mhz, msys, bw, tmode, gi, timeout):
-        """Pełny skan - Z POPRAWIONĄ LOGIKĄ SKŁADANIA SEKCJI"""
+        """Pełny skan z wykrywaniem wszystkich PIDów"""
         pids_to_scan = [self.PID_ALL]
         
         url = self._build_stream_url(
@@ -434,10 +572,12 @@ class MultiplexScanner:
         pat_sections = 0
         sdt_sections = 0
         nit_sections = 0
+        pmt_sections = 0
         
         # Zmienne do monitorowania stabilności danych
         previous_programs = {}
         previous_services = {}
+        previous_pmt_streams = {}
         stable_cycles = 0
         min_stable_cycles = 3
         
@@ -452,7 +592,7 @@ class MultiplexScanner:
             last_stability_check = time.time()
             buffer = b''
             
-            print(f"  ⏳ Zbieranie danych i poprawnie składanie tabele...")
+            print(f"  ⏳ Zbieranie danych i wykrywanie PIDów...")
             
             for chunk in response.iter_content(chunk_size=TSPacket.PACKET_SIZE * 100):
                 buffer += chunk
@@ -474,16 +614,16 @@ class MultiplexScanner:
                         if not payload:
                             continue
                         
-                        # --- POPRAWIONA LOGIKA SKŁADANIA SEKCJI ---
+                        # Logika składania sekcji
                         if packet.payload_unit_start:
-                            # 1. Zakończ poprzednią sekcję i spróbuj ją sparsować
+                            # Zakończ poprzednią sekcję i spróbuj ją sparsować
                             section_data = pid_buffers[packet.pid].getvalue()
                             if len(section_data) > 3:
                                 self._parse_section_data(packet.pid, section_data, pat_parser, nit_parser, sdt_parser, pmt_parser,
                                                          programs, transport_streams, services, pmt_pids, pmt_streams,
-                                                         pat_sections, sdt_sections, nit_sections)
+                                                         pat_sections, sdt_sections, nit_sections, pmt_sections)
                             
-                            # 2. Zacznij nową sekcję
+                            # Zacznij nową sekcję
                             pid_buffers[packet.pid] = BytesIO()
                             pointer = payload[0]
                             
@@ -491,7 +631,7 @@ class MultiplexScanner:
                             if len(payload) > 1 + pointer:
                                 pid_buffers[packet.pid].write(payload[1+pointer:])
                         else:
-                            # 3. Doklej dane do istniejącej sekcji
+                            # Doklej dane do istniejącej sekcji
                             pid_buffers[packet.pid].write(payload)
                     
                     except ValueError:
@@ -505,15 +645,15 @@ class MultiplexScanner:
                 
                 # Sprawdzanie stabilności danych co 2 sekundy
                 if now - last_stability_check > 2.0:
-                    has_data = len(programs) > 0 or len(services) > 0
+                    has_data = len(programs) > 0 or len(services) > 0 or len(pmt_streams) > 0
 
                     if has_data:
-                        if programs == previous_programs and services == previous_services:
+                        if programs == previous_programs and services == previous_services and pmt_streams == previous_pmt_streams:
                             stable_cycles += 1
                             print(f"  ⏱ {now-start_time:.0f}s | 📦 {total_packets} pkt | "
                                   f"📋 PAT:{len(programs)}({pat_sections}) "
                                   f"SDT:{len(services)}({sdt_sections}) "
-                                  f"PMT:{len(pmt_streams)} | "
+                                  f"PMT:{len(pmt_streams)}({pmt_sections}) | "
                                   f"🔄 Stabilność: {stable_cycles}/{min_stable_cycles}", 
                                   end='\r', flush=True)
                             
@@ -524,21 +664,23 @@ class MultiplexScanner:
                             stable_cycles = 0
                             previous_programs = programs.copy()
                             previous_services = services.copy()
+                            previous_pmt_streams = pmt_streams.copy()
                             
                             print(f"  ⏱ {now-start_time:.0f}s | 📦 {total_packets} pkt | "
                                   f"📋 PAT:{len(programs)}({pat_sections}) "
                                   f"SDT:{len(services)}({sdt_sections}) "
-                                  f"PMT:{len(pmt_streams)} | "
+                                  f"PMT:{len(pmt_streams)}({pmt_sections}) | "
                                   f"🔄 Nowe dane", 
                                   end='\r', flush=True)
                     else:
                         stable_cycles = 0
                         previous_programs = {}
                         previous_services = {}
+                        previous_pmt_streams = {}
                         print(f"  ⏱ {now-start_time:.0f}s | 📦 {total_packets} pkt | "
                               f"📋 PAT:{len(programs)}({pat_sections}) "
                               f"SDT:{len(services)}({sdt_sections}) "
-                              f"PMT:{len(pmt_streams)} | "
+                              f"PMT:{len(pmt_streams)}({pmt_sections}) | "
                               f"🔄 Oczekiwanie na dane...", 
                               end='\r', flush=True)
 
@@ -547,7 +689,7 @@ class MultiplexScanner:
                     print(f"  ⏱ {now-start_time:.0f}s | 📦 {total_packets} pkt | "
                           f"📋 PAT:{len(programs)}({pat_sections}) "
                           f"SDT:{len(services)}({sdt_sections}) "
-                          f"PMT:{len(pmt_streams)}", 
+                          f"PMT:{len(pmt_streams)}({pmt_sections})", 
                           end='\r', flush=True)
                     last_log = now
                 
@@ -564,8 +706,7 @@ class MultiplexScanner:
                 if len(section_data) > 3:
                     self._parse_section_data(pid, section_data, pat_parser, nit_parser, sdt_parser, pmt_parser,
                                              programs, transport_streams, services, pmt_pids, pmt_streams,
-                                             pat_sections, sdt_sections, nit_sections)
-
+                                             pat_sections, sdt_sections, nit_sections, pmt_sections)
 
             end_reason = "przekroczenie limitu czasu"
             if stable_cycles >= min_stable_cycles:
@@ -575,7 +716,7 @@ class MultiplexScanner:
             print(f"  📊 PIDs: PAT={pid_counts[self.PID_PAT]} "
                   f"NIT={pid_counts[self.PID_NIT]} "
                   f"SDT={pid_counts[self.PID_SDT]}")
-            print(f"  📋 Sekcje: PAT={pat_sections} SDT={sdt_sections} NIT={nit_sections}")
+            print(f"  📋 Sekcje: PAT={pat_sections} SDT={sdt_sections} NIT={nit_sections} PMT={pmt_sections}")
             
             if not services and programs:
                 print("  ⚠ Znaleziono programy w PAT, ale nie udało się odczytać nazw z SDT.")
@@ -605,11 +746,13 @@ class MultiplexScanner:
                     'pat_sections': pat_sections,
                     'sdt_sections': sdt_sections,
                     'nit_sections': nit_sections,
+                    'pmt_sections': pmt_sections,
                     'pid_counts': dict(pid_counts),
                     'stable_cycles': stable_cycles
                 }
             }
             
+            # Przetwarzaj usługi z pełnymi informacjami o PIDach
             for service_id, service_info in services.items():
                 pmt_pid = programs.get(service_id, 0)
                 
@@ -618,11 +761,28 @@ class MultiplexScanner:
                     'name': service_info['name'],
                     'provider': service_info.get('provider', ''),
                     'type': service_info.get('type', 0),
-                    'pmt_pid': pmt_pid
+                    'pmt_pid': pmt_pid,
+                    'streams': {}
                 }
                 
+                # Dodaj informacje o strumieniach z PMT
                 if pmt_pid in pmt_streams:
                     service_data['streams'] = pmt_streams[pmt_pid]
+                    
+                    # Wyświetl szczegóły PIDów dla debugowania
+                    if len(result['services']) < 3:  # Tylko dla pierwszych 3 usług
+                        print(f"  🔍 {service_info['name']} PIDy:")
+                        for category, streams in service_data['streams'].items():
+                            if isinstance(streams, list) and streams:
+                                for stream in streams:
+                                    if isinstance(stream, dict):
+                                        pid = stream.get('pid', 'N/A')
+                                        type_name = stream.get('type_name', 'Unknown')
+                                        lang = stream.get('descriptors', {}).get('language', '')
+                                        lang_str = f" [{lang}]" if lang else ""
+                                        print(f"     {category.upper()}: PID {pid} ({type_name}){lang_str}")
+                                    else:
+                                        print(f"     {category.upper()}: PID {stream}")
                 
                 result['services'].append(service_data)
             
@@ -634,7 +794,7 @@ class MultiplexScanner:
 
     def _parse_section_data(self, pid, data, pat_parser, nit_parser, sdt_parser, pmt_parser,
                             programs, transport_streams, services, pmt_pids, pmt_streams,
-                            pat_sections, sdt_sections, nit_sections):
+                            pat_sections, sdt_sections, nit_sections, pmt_sections):
         """Parsuje dane sekcji i aktualizuje odpowiednie zmienne"""
         try:
             if pid == self.PID_PAT:
@@ -662,10 +822,12 @@ class MultiplexScanner:
             elif pid in pmt_pids:
                 streams = pmt_parser.parse_section(data)
                 if streams:
-                    pmt_streams[pid] = streams
+                    if pid not in pmt_streams:
+                        pmt_streams[pid] = {}
+                    pmt_streams[pid].update(streams)
+                    pmt_sections += 1
         except Exception:
             pass # Ignoruj błędy parsowania pojedynczej sekcji
-
 
     def _build_stream_url(self, freq_mhz, msys, bw, tmode, gi, pids):
         """Buduje URL strumienia SAT>IP"""
@@ -722,7 +884,7 @@ class AutoScanner:
         systems = ['dvbt2', 'dvbt'] if msys == 'both' else [msys]
         
         print(f"\n{'='*70}")
-        print(f"  AUTOSKAN DVB-T/T2 - WERSJA Z POPRAWIONYM REASSEMBLY")
+        print(f"  AUTOSKAN DVB-T/T2 - PEŁNE WYKRYWANIE PIDÓW")
         print(f"{'='*70}")
         print(f"Zakres: {'VHF ' if vhf else ''}{'UHF' if uhf else ''}")
         print(f"Systemy: {', '.join(s.upper() for s in systems)}")
@@ -764,7 +926,7 @@ class AutoScanner:
         return self.found_muxes
     
     def export_to_m3u(self, output_file='channels.m3u'):
-        """Eksportuje znalezione kanały do M3U"""
+        """Eksportuje znalezione kanały do M3U z pełnymi listami PIDów"""
         if not self.found_muxes:
             print("Brak multipleksów do eksportu")
             return
@@ -784,17 +946,48 @@ class AutoScanner:
                     name = service['name']
                     pmt_pid = service.get('pmt_pid', 0)
                     
-                    pids = [0, pmt_pid]
+                    # Zbierz wszystkie PIDy dla tej usługi
+                    all_pids = set()
                     
+                    # Dodaj podstawowe PIDy
+                    all_pids.add(0)  # PAT
+                    
+                    # Dodaj PMT PID
+                    if pmt_pid > 0:
+                        all_pids.add(pmt_pid)
+                    
+                    # Dodaj wszystkie strumienie z PMT
                     if 'streams' in service:
-                        for stream_type, stream_pids in service['streams'].items():
-                            pids.extend(stream_pids)
+                        for category, streams in service['streams'].items():
+                            if isinstance(streams, list):
+                                for stream in streams:
+                                    if isinstance(stream, dict):
+                                        all_pids.add(stream.get('pid', 0))
+                                    else:
+                                        all_pids.add(stream)
+                            elif isinstance(streams, dict):
+                                for stream in streams.values():
+                                    if isinstance(stream, dict):
+                                        all_pids.add(stream.get('pid', 0))
+                                    else:
+                                        all_pids.add(stream)
                     
-                    pids = sorted(set(p for p in pids if p > 0))
-                    pids_str = ','.join(['0'] + [str(p) for p in pids])
+                    # Dodaj standardowe PIDy EPG
+                    all_pids.update([16, 17, 18, 20])  # EIT, SDT, TDT, NIT
                     
+                    # Usuń PID 0 z listy (już dodany na początku)
+                    all_pids.discard(0)
+                    
+                    # Konwertuj na posortowaną listę
+                    pids_list = sorted([p for p in all_pids if p > 0])
+                    
+                    # Dodaj 0 na początku listy
+                    pids_str = ','.join(['0'] + [str(p) for p in pids_list])
+                    
+                    # Zapisz do M3U
                     f.write(f'#EXTINF:-1 tvg-id="{service_id}",{name}\n')
                     
+                    # Buduj URL SAT>IP
                     url = (f"rtsp://{self.scanner.host}:554/"
                            f"?freq={freq}&msys={msys}&bw={bw}&tmode={tmode}&gi={gi}"
                            f"&pids={pids_str}")
@@ -807,6 +1000,42 @@ class AutoScanner:
         total_services = sum(len(mux['services']) for mux in self.found_muxes)
         print(f"   Multipleksy: {len(self.found_muxes)}")
         print(f"   Stacje: {total_services}")
+        
+        # Zapisz szczegółowe informacje o PIDach do pliku JSON
+        json_file = output_file.replace('.m3u', '_pids.json')
+        self.export_pids_info(json_file)
+    
+    def export_pids_info(self, json_file):
+        """Eksportuje szczegółowe informacje o PIDach do pliku JSON"""
+        pids_info = {
+            'scan_time': datetime.now().isoformat(),
+            'multiplexes': []
+        }
+        
+        for mux in self.found_muxes:
+            mux_info = {
+                'frequency': mux['frequency'],
+                'system': mux['system'],
+                'bandwidth': mux['bandwidth'],
+                'services': []
+            }
+            
+            for service in mux['services']:
+                service_info = {
+                    'id': service['id'],
+                    'name': service['name'],
+                    'provider': service.get('provider', ''),
+                    'pmt_pid': service.get('pmt_pid', 0),
+                    'streams': service.get('streams', {})
+                }
+                mux_info['services'].append(service_info)
+            
+            pids_info['multiplexes'].append(mux_info)
+        
+        with open(json_file, 'w', encoding='utf-8') as f:
+            json.dump(pids_info, f, indent=2, ensure_ascii=False)
+        
+        print(f"   Szczegóły PIDów: {json_file}")
 
 
 # ============================================================================
@@ -854,7 +1083,7 @@ class ConfigScanner:
     def scan_from_config(self, config_file, detection_time=3, full_scan_time=10):
         """Skanuje multipleksy z pliku konfiguracyjnego"""
         print(f"\n{'='*70}")
-        print(f"  SKANOWANIE Z PLIKU KONFIGURACYJNEGO - WERSJA Z POPRAWIONYM REASSEMBLY")
+        print(f"  SKANOWANIE Z PLIKU KONFIGURACYJNEGO - PEŁNE WYKRYWANIE PIDÓW")
         print(f"{'='*70}")
         print(f"Plik: {config_file}\n")
         
@@ -919,7 +1148,7 @@ class ConfigScanner:
         return self.found_muxes
     
     def export_to_m3u(self, output_file='channels.m3u'):
-        """Eksportuje znalezione kanały do M3U"""
+        """Eksportuje znalezione kanały do M3U z pełnymi listami PIDów"""
         if not self.found_muxes:
             print("Brak multipleksów do eksportu")
             return
@@ -939,12 +1168,51 @@ class ConfigScanner:
                     name = service['name']
                     pmt_pid = service.get('pmt_pid', 0)
                     
+                    # Zbierz wszystkie PIDy dla tej usługi
+                    all_pids = set()
+                    
+                    # Dodaj podstawowe PIDy
+                    all_pids.add(0)  # PAT
+                    
+                    # Dodaj PMT PID
+                    if pmt_pid > 0:
+                        all_pids.add(pmt_pid)
+                    
+                    # Dodaj wszystkie strumienie z PMT
+                    if 'streams' in service:
+                        for category, streams in service['streams'].items():
+                            if isinstance(streams, list):
+                                for stream in streams:
+                                    if isinstance(stream, dict):
+                                        all_pids.add(stream.get('pid', 0))
+                                    else:
+                                        all_pids.add(stream)
+                            elif isinstance(streams, dict):
+                                for stream in streams.values():
+                                    if isinstance(stream, dict):
+                                        all_pids.add(stream.get('pid', 0))
+                                    else:
+                                        all_pids.add(stream)
+                    
+                    # Dodaj standardowe PIDy EPG
+                    all_pids.update([16, 17, 18, 20])  # EIT, SDT, TDT, NIT
+                    
+                    # Usuń PID 0 z listy (już dodany na początku)
+                    all_pids.discard(0)
+                    
+                    # Konwertuj na posortowaną listę
+                    pids_list = sorted([p for p in all_pids if p > 0])
+                    
+                    # Dodaj 0 na początku listy
+                    pids_str = ','.join(['0'] + [str(p) for p in pids_list])
+                    
+                    # Zapisz do M3U
                     f.write(f'#EXTINF:-1 tvg-id="{service_id}",{name}\n')
                     
                     # Buduj URL SAT>IP
                     url = (f"rtsp://{self.scanner.host}:{self.scanner.port}/"
                            f"?freq={freq}&msys={msys}&bw={bw}&tmode={tmode}&gi={gi}"
-                           f"&pids=0,{pmt_pid}")
+                           f"&pids={pids_str}")
                     
                     f.write(f'{url}\n')
         
@@ -954,6 +1222,42 @@ class ConfigScanner:
         total_services = sum(len(mux['services']) for mux in self.found_muxes)
         print(f"   Multipleksy: {len(self.found_muxes)}")
         print(f"   Stacje: {total_services}")
+        
+        # Zapisz szczegółowe informacje o PIDach do pliku JSON
+        json_file = output_file.replace('.m3u', '_pids.json')
+        self.export_pids_info(json_file)
+    
+    def export_pids_info(self, json_file):
+        """Eksportuje szczegółowe informacje o PIDach do pliku JSON"""
+        pids_info = {
+            'scan_time': datetime.now().isoformat(),
+            'multiplexes': []
+        }
+        
+        for mux in self.found_muxes:
+            mux_info = {
+                'frequency': mux['frequency'],
+                'system': mux['system'],
+                'bandwidth': mux['bandwidth'],
+                'services': []
+            }
+            
+            for service in mux['services']:
+                service_info = {
+                    'id': service['id'],
+                    'name': service['name'],
+                    'provider': service.get('provider', ''),
+                    'pmt_pid': service.get('pmt_pid', 0),
+                    'streams': service.get('streams', {})
+                }
+                mux_info['services'].append(service_info)
+            
+            pids_info['multiplexes'].append(mux_info)
+        
+        with open(json_file, 'w', encoding='utf-8') as f:
+            json.dump(pids_info, f, indent=2, ensure_ascii=False)
+        
+        print(f"   Szczegóły PIDów: {json_file}")
 
 
 # ============================================================================
@@ -962,7 +1266,7 @@ class ConfigScanner:
 
 def main():
     parser = argparse.ArgumentParser(
-        description='DVB-T/T2 Scanner w Pythonie - WERSJA Z POPRAWIONYM REASSEMBLY',
+        description='DVB-T/T2 Scanner z pełnym wykrywaniem PIDów',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Przykłady użycia:
@@ -1076,7 +1380,7 @@ Przykłady użycia:
         port = args.port
     
     print("=" * 70)
-    print("  DVB-T/T2 SCANNER - WERSJA Z POPRAWIONYM REASSEMBLY")
+    print("  DVB-T/T2 SCANNER - PEŁNE WYKRYWANIE PIDÓW")
     print("=" * 70)
     print(f"🌐 Serwer: {host}:{port}")
     
