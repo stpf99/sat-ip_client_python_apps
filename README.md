@@ -1,4 +1,5 @@
 
+for example:
 
 python dvb_scanner.py --config pl-Rzeszow_Baranowka -o channels.m3u
 
