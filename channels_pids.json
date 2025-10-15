@@ -1,0 +1,4454 @@
+{
+  "scan_time": "2025-10-15T19:13:55.245891",
+  "protocol": "http",
+  "port": 8080,
+  "multiplexes": [
+    {
+      "frequency": 184.5,
+      "system": "dvbt",
+      "bandwidth": 7,
+      "services": [
+        {
+          "id": 57,
+          "name": "Metro",
+          "provider": "Emitel",
+          "pmt_pid": 8061,
+          "streams": {
+            "pcr": [
+              8062
+            ],
+            "video": [
+              {
+                "pid": 8062,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 8063,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 8064,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "org",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 8065,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 4,
+                    "ancillary_page": 5
+                  }
+                }
+              },
+              {
+                "pid": 8067,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 7744,
+                "type": 146,
+                "type_name": "Unknown 92",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 58,
+          "name": "Zoom TV",
+          "provider": "Emitel",
+          "pmt_pid": 8081,
+          "streams": {
+            "pcr": [
+              8082
+            ],
+            "video": [
+              {
+                "pid": 8082,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 8083,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 8084,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "org",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 8086,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "POL",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 8087,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 7997,
+                "type": 180,
+                "type_name": "Unknown B4",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 59,
+          "name": "Nowa TV",
+          "provider": "Emitel",
+          "pmt_pid": 8101,
+          "streams": {
+            "pcr": [
+              8102
+            ],
+            "video": [
+              {
+                "pid": 8102,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 8103,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 8108,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 8105,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 47,
+                    "magazine": 0,
+                    "page": 15
+                  }
+                }
+              },
+              {
+                "pid": 8107,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 5560,
+                "type": 117,
+                "type_name": "Unknown 75",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 60,
+          "name": "WP",
+          "provider": "Emitel",
+          "pmt_pid": 8121,
+          "streams": {
+            "pcr": [
+              8122
+            ],
+            "video": [
+              {
+                "pid": 8122,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 8123,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 1664,
+                "type": 28,
+                "type_name": "MPEG-4 AAC Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 8124,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "org",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 8128,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 8125,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 23,
+                    "magazine": 5,
+                    "page": 9
+                  }
+                }
+              },
+              {
+                "pid": 8127,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 72,
+          "name": "Republika",
+          "provider": "Emitel",
+          "pmt_pid": 7201,
+          "streams": {
+            "pcr": [
+              7202
+            ],
+            "video": [
+              {
+                "pid": 7202,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 7203,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 7207,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 1288,
+                "type": 245,
+                "type_name": "Unknown F5",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 73,
+          "name": "wPolsce24",
+          "provider": "Emitel",
+          "pmt_pid": 7301,
+          "streams": {
+            "pcr": [
+              7302
+            ],
+            "video": [
+              {
+                "pid": 7302,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 7303,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 7306,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 17,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 7307,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 5837,
+                "type": 78,
+                "type_name": "Unknown 4E",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 86,
+          "name": "CDA Premium",
+          "provider": "Emitel",
+          "pmt_pid": 8161,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 8167,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 3248,
+                "type": 152,
+                "type_name": "Unknown 98",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 87,
+          "name": "Sklep Kapitan.pl",
+          "provider": "Emitel",
+          "pmt_pid": 8051,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "data": [
+              {
+                "pid": 8057,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 6591,
+                "type": 33,
+                "type_name": "Unknown 21",
+                "category": "data",
+                "descriptors": {}
+              }
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 95,
+          "name": "test 95",
+          "provider": "Emitel",
+          "pmt_pid": 8071,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 2010,
+                "type": 175,
+                "type_name": "Unknown AF",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 96,
+          "name": "test 96",
+          "provider": "Emitel",
+          "pmt_pid": 8091,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 4881,
+                "type": 49,
+                "type_name": "Unknown 31",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 97,
+          "name": "test 97",
+          "provider": "Emitel",
+          "pmt_pid": 8111,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 7308,
+                "type": 103,
+                "type_name": "Unknown 67",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 98,
+          "name": "EmiRadio",
+          "provider": "Emitel",
+          "pmt_pid": 8131,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 8137,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 2696,
+                "type": 56,
+                "type_name": "Unknown 38",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 99,
+          "name": "EmiTV",
+          "provider": "Emitel",
+          "pmt_pid": 8141,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 8147,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 3784,
+                "type": 108,
+                "type_name": "Unknown 6C",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 211,
+          "name": "test 211",
+          "provider": "Emitel",
+          "pmt_pid": 211,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 4196,
+                "type": 176,
+                "type_name": "Unknown B0",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 212,
+          "name": "test 212",
+          "provider": "Emitel",
+          "pmt_pid": 212,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 8105,
+                "type": 21,
+                "type_name": "Unknown 15",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 213,
+          "name": "test 213",
+          "provider": "Emitel",
+          "pmt_pid": 213,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 4148,
+                "type": 67,
+                "type_name": "Unknown 43",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 214,
+          "name": "test 214",
+          "provider": "Emitel",
+          "pmt_pid": 214,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 146,
+                "type": 184,
+                "type_name": "Unknown B8",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 215,
+          "name": "test 215",
+          "provider": "Emitel",
+          "pmt_pid": 215,
+          "streams": {
+            "pcr": [
+              8142
+            ],
+            "video": [
+              {
+                "pid": 8142,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 3855,
+                "type": 238,
+                "type_name": "Unknown EE",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frequency": 538.0,
+      "system": "dvbt2",
+      "bandwidth": 8,
+      "services": [
+        {
+          "id": 1,
+          "name": "TVP1",
+          "provider": "Emitel",
+          "pmt_pid": 101,
+          "streams": {
+            "pcr": [
+              102
+            ],
+            "video": [
+              {
+                "pid": 102,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 103,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 104,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "qaa",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 105,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 106,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 107,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 108,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 3727,
+                "type": 251,
+                "type_name": "Unknown FB",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "name": "TVP2",
+          "provider": "Emitel",
+          "pmt_pid": 201,
+          "streams": {
+            "pcr": [
+              202
+            ],
+            "video": [
+              {
+                "pid": 202,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 203,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 204,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "qaa",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 205,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 206,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 207,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 208,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 2120,
+                "type": 11,
+                "type_name": "Unknown 0B",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 19,
+          "name": "TVP3 Rzeszow",
+          "provider": "Emitel",
+          "pmt_pid": 1901,
+          "streams": {
+            "pcr": [
+              1902
+            ],
+            "video": [
+              {
+                "pid": 1902,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 1903,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 1905,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 1906,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 1907,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 1908,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 4881,
+                "type": 142,
+                "type_name": "Unknown 8E",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 31,
+          "name": "TVP Kultura",
+          "provider": "Emitel",
+          "pmt_pid": 3101,
+          "streams": {
+            "pcr": [
+              3102
+            ],
+            "video": [
+              {
+                "pid": 3102,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 3103,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 3104,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "qaa",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 3105,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 3106,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 3107,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 3108,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 3109,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "AC4",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 3628,
+                "type": 133,
+                "type_name": "Unknown 85",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 32,
+          "name": "TVP Historia",
+          "provider": "Emitel",
+          "pmt_pid": 501,
+          "streams": {
+            "pcr": [
+              502
+            ],
+            "video": [
+              {
+                "pid": 502,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 503,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 505,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 506,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 507,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 508,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 3298,
+                "type": 33,
+                "type_name": "Unknown 21",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 33,
+          "name": "TVP Sport",
+          "provider": "Emitel",
+          "pmt_pid": 3301,
+          "streams": {
+            "pcr": [
+              3302
+            ],
+            "video": [
+              {
+                "pid": 3302,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 3303,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 3306,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 3307,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 3308,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 6458,
+                "type": 68,
+                "type_name": "Unknown 44",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 35,
+          "name": "TVP Info",
+          "provider": "Emitel",
+          "pmt_pid": 3501,
+          "streams": {
+            "pcr": [
+              3502
+            ],
+            "video": [
+              {
+                "pid": 3502,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 3503,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 3506,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 3507,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 4308,
+                "type": 93,
+                "type_name": "Unknown 5D",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 51,
+          "name": "TVP ABC",
+          "provider": "Emitel",
+          "pmt_pid": 5101,
+          "streams": {
+            "pcr": [
+              5102
+            ],
+            "video": [
+              {
+                "pid": 5102,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 5103,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 5104,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "Qaa",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 5106,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 5107,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 5108,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "Aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 570,
+                "type": 144,
+                "type_name": "Unknown 90",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 88,
+          "name": "TVP GO",
+          "provider": "Emitel",
+          "pmt_pid": 7711,
+          "streams": {
+            "pcr": [
+              7702
+            ],
+            "video": [
+              {
+                "pid": 7702,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 7707,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 6962,
+                "type": 155,
+                "type_name": "Unknown 9B",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 91,
+          "name": "TVP World",
+          "provider": "Emitel",
+          "pmt_pid": 7712,
+          "streams": {
+            "pcr": [
+              7702
+            ],
+            "video": [
+              {
+                "pid": 7702,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 8107,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 4985,
+                "type": 147,
+                "type_name": "Unknown 93",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 92,
+          "name": "TVP ABC 2",
+          "provider": "Emitel",
+          "pmt_pid": 7713,
+          "streams": {
+            "pcr": [
+              7702
+            ],
+            "video": [
+              {
+                "pid": 7702,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 7907,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 7958,
+                "type": 199,
+                "type_name": "Unknown C7",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 93,
+          "name": "TVP Historia 2",
+          "provider": "Emitel",
+          "pmt_pid": 7714,
+          "streams": {
+            "pcr": [
+              7702
+            ],
+            "video": [
+              {
+                "pid": 7702,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 7807,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 3432,
+                "type": 130,
+                "type_name": "HDMV DTS Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 94,
+          "name": "TVP Kultura 2",
+          "provider": "Emitel",
+          "pmt_pid": 7715,
+          "streams": {
+            "pcr": [
+              7702
+            ],
+            "video": [
+              {
+                "pid": 7702,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 8007,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 2475,
+                "type": 39,
+                "type_name": "Unknown 27",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frequency": 562.0,
+      "system": "dvbt2",
+      "bandwidth": 8,
+      "services": [
+        {
+          "id": 3,
+          "name": "Polsat",
+          "provider": "Emitel",
+          "pmt_pid": 101,
+          "streams": {
+            "pcr": [
+              102
+            ],
+            "video": [
+              {
+                "pid": 102,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 103,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 108,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 105,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 106,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 0,
+                    "ancillary_page": 0
+                  },
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 107,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 3744,
+                "type": 231,
+                "type_name": "Unknown E7",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4,
+          "name": "TVN",
+          "provider": "Emitel",
+          "pmt_pid": 201,
+          "streams": {
+            "pcr": [
+              202
+            ],
+            "video": [
+              {
+                "pid": 202,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 203,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 204,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "org",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 205,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 206,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 4,
+                    "ancillary_page": 5
+                  }
+                }
+              },
+              {
+                "pid": 207,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 211,
+                "type": 12,
+                "type_name": "Unknown 0C",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 210,
+                "type": 11,
+                "type_name": "Unknown 0B",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 5713,
+                "type": 140,
+                "type_name": "Unknown 8C",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 5,
+          "name": "TV4",
+          "provider": "Emitel",
+          "pmt_pid": 301,
+          "streams": {
+            "pcr": [
+              302
+            ],
+            "video": [
+              {
+                "pid": 302,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 303,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 308,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 305,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 309,
+                "type": 12,
+                "type_name": "Unknown 0C",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 307,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 7745,
+                "type": 182,
+                "type_name": "Unknown B6",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "TV Puls",
+          "provider": "Emitel",
+          "pmt_pid": 401,
+          "streams": {
+            "pcr": [
+              402
+            ],
+            "video": [
+              {
+                "pid": 402,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 403,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 408,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 405,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 23,
+                    "magazine": 7,
+                    "page": 14
+                  }
+                }
+              },
+              {
+                "pid": 409,
+                "type": 12,
+                "type_name": "Unknown 0C",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 407,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 7089,
+                "type": 201,
+                "type_name": "Unknown C9",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 23,
+          "name": "TVN 7",
+          "provider": "Emitel",
+          "pmt_pid": 501,
+          "streams": {
+            "pcr": [
+              502
+            ],
+            "video": [
+              {
+                "pid": 502,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 503,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 504,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "org",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 505,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 506,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 4,
+                    "ancillary_page": 5
+                  }
+                }
+              },
+              {
+                "pid": 507,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 511,
+                "type": 12,
+                "type_name": "Unknown 0C",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 510,
+                "type": 11,
+                "type_name": "Unknown 0B",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 4223,
+                "type": 152,
+                "type_name": "Unknown 98",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 24,
+          "name": "PULS 2",
+          "provider": "Emitel",
+          "pmt_pid": 601,
+          "streams": {
+            "pcr": [
+              602
+            ],
+            "video": [
+              {
+                "pid": 602,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 603,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 608,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 605,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 23,
+                    "magazine": 7,
+                    "page": 14
+                  }
+                }
+              },
+              {
+                "pid": 607,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 1981,
+                "type": 245,
+                "type_name": "Unknown F5",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 25,
+          "name": "TV6",
+          "provider": "Emitel",
+          "pmt_pid": 701,
+          "streams": {
+            "pcr": [
+              702
+            ],
+            "video": [
+              {
+                "pid": 702,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 703,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 708,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 707,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 305,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 4522,
+                "type": 10,
+                "type_name": "Unknown 0A",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 26,
+          "name": "Super Polsat",
+          "provider": "Emitel",
+          "pmt_pid": 801,
+          "streams": {
+            "pcr": [
+              802
+            ],
+            "video": [
+              {
+                "pid": 802,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 803,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 808,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 806,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 0,
+                    "ancillary_page": 0
+                  },
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 807,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 105,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 9,
+                    "magazine": 0,
+                    "page": 0
+                  }
+                }
+              },
+              {
+                "pid": 4106,
+                "type": 50,
+                "type_name": "Unknown 32",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frequency": 554.0,
+      "system": "dvbt2",
+      "bandwidth": 8,
+      "services": [
+        {
+          "id": 4109,
+          "name": "Radio Rekord FM",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 41,
+          "streams": {
+            "pcr": [
+              56
+            ],
+            "audio": [
+              {
+                "pid": 56,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 3350,
+                "type": 119,
+                "type_name": "Unknown 77",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4110,
+          "name": "Radio Kolor 103FM",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 42,
+          "streams": {
+            "pcr": [
+              57
+            ],
+            "audio": [
+              {
+                "pid": 57,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 5404,
+                "type": 33,
+                "type_name": "Unknown 21",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4111,
+          "name": "Radio Kaszebe FM",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 43,
+          "streams": {
+            "pcr": [
+              256
+            ],
+            "audio": [
+              {
+                "pid": 256,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 3754,
+                "type": 197,
+                "type_name": "Unknown C5",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4112,
+          "name": "Radio Jasna Gora",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 45,
+          "streams": {
+            "pcr": [
+              59
+            ],
+            "audio": [
+              {
+                "pid": 59,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 3120,
+                "type": 237,
+                "type_name": "Unknown ED",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 8189,
+          "name": "Polsat  HbbTV",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 61,
+          "streams": {
+            "pcr": [
+              257
+            ],
+            "data": [
+              {
+                "pid": 67,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 179,
+                "type": 8,
+                "type_name": "Unknown 08",
+                "category": "data",
+                "descriptors": {}
+              }
+            ],
+            "video": [
+              {
+                "pid": 257,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 8190,
+          "name": "Newland",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 8189,
+          "streams": {
+            "data": [
+              {
+                "pid": 8190,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 5491,
+                "type": 42,
+                "type_name": "Unknown 2A",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 110,
+          "name": "Polsat Sport 1",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 112,
+          "streams": {
+            "pcr": [
+              212
+            ],
+            "video": [
+              {
+                "pid": 212,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 312,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 4178,
+                "type": 215,
+                "type_name": "Unknown D7",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 111,
+          "name": "Polsat Sport 2",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 116,
+          "streams": {
+            "pcr": [
+              216
+            ],
+            "video": [
+              {
+                "pid": 216,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 316,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 266,
+                "type": 174,
+                "type_name": "Unknown AE",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 112,
+          "name": "Eurosport 1",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 113,
+          "streams": {
+            "pcr": [
+              213
+            ],
+            "video": [
+              {
+                "pid": 213,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 313,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 132,
+                "type": 132,
+                "type_name": "SDDS Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 113,
+          "name": "Eurosport 2",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 119,
+          "streams": {
+            "pcr": [
+              219
+            ],
+            "video": [
+              {
+                "pid": 219,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 319,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 6718,
+                "type": 15,
+                "type_name": "MPEG-4 AAC Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 114,
+          "name": "Eleven Sports 1",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 114,
+          "streams": {
+            "pcr": [
+              214
+            ],
+            "video": [
+              {
+                "pid": 214,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 314,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 3665,
+                "type": 202,
+                "type_name": "Unknown CA",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 115,
+          "name": "Eleven Sports 2",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 117,
+          "streams": {
+            "pcr": [
+              217
+            ],
+            "video": [
+              {
+                "pid": 217,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 317,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 4500,
+                "type": 186,
+                "type_name": "Unknown BA",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 116,
+          "name": "TVN TURBO HD",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 115,
+          "streams": {
+            "pcr": [
+              215
+            ],
+            "video": [
+              {
+                "pid": 215,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 315,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 2690,
+                "type": 102,
+                "type_name": "Unknown 66",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 117,
+          "name": "TVN Style",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 121,
+          "streams": {
+            "pcr": [
+              221
+            ],
+            "video": [
+              {
+                "pid": 221,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 321,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 1877,
+                "type": 70,
+                "type_name": "Unknown 46",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 118,
+          "name": "Polsat News Polityka",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 118,
+          "streams": {
+            "pcr": [
+              218
+            ],
+            "video": [
+              {
+                "pid": 218,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 318,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "subtitle": [
+              {
+                "pid": 2890,
+                "type": 19,
+                "type_name": "MPEG-4 Text",
+                "category": "subtitle",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 119,
+          "name": "Polsat News HD",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 110,
+          "streams": {
+            "pcr": [
+              210
+            ],
+            "video": [
+              {
+                "pid": 210,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 310,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 3854,
+                "type": 60,
+                "type_name": "Unknown 3C",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 120,
+          "name": "TVN 24 HD",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 120,
+          "streams": {
+            "pcr": [
+              220
+            ],
+            "video": [
+              {
+                "pid": 220,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 320,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              }
+            ],
+            "data": [
+              {
+                "pid": 6503,
+                "type": 236,
+                "type_name": "Unknown EC",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4096,
+          "name": "RMF FM",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 4096,
+          "streams": {
+            "pcr": [
+              400
+            ],
+            "audio": [
+              {
+                "pid": 400,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {}
+              },
+              {
+                "pid": 3118,
+                "type": 134,
+                "type_name": "DTS-HD Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4097,
+          "name": "RMF MAXXX",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 4097,
+          "streams": {
+            "pcr": [
+              401
+            ],
+            "audio": [
+              {
+                "pid": 401,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 7982,
+                "type": 170,
+                "type_name": "Unknown AA",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4098,
+          "name": "Antyradio",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 4098,
+          "streams": {
+            "pcr": [
+              402
+            ],
+            "audio": [
+              {
+                "pid": 402,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 4960,
+                "type": 223,
+                "type_name": "Unknown DF",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4099,
+          "name": "Norda FM",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 4099,
+          "streams": {
+            "pcr": [
+              403
+            ],
+            "audio": [
+              {
+                "pid": 403,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 1584,
+                "type": 212,
+                "type_name": "Unknown D4",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4100,
+          "name": "Radio ZET",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 4100,
+          "streams": {
+            "pcr": [
+              404
+            ],
+            "audio": [
+              {
+                "pid": 404,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 2353,
+                "type": 84,
+                "type_name": "Unknown 54",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4101,
+          "name": "Zlote Przeboje",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 4101,
+          "streams": {
+            "pcr": [
+              405
+            ],
+            "audio": [
+              {
+                "pid": 405,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 3335,
+                "type": 143,
+                "type_name": "Unknown 8F",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4102,
+          "name": "Radio Plus",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 33,
+          "streams": {
+            "pcr": [
+              258
+            ],
+            "audio": [
+              {
+                "pid": 258,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 996,
+                "type": 225,
+                "type_name": "Unknown E1",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4103,
+          "name": "VOX FM",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 34,
+          "streams": {
+            "pcr": [
+              263
+            ],
+            "audio": [
+              {
+                "pid": 263,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 1171,
+                "type": 112,
+                "type_name": "Unknown 70",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4104,
+          "name": "TOK FM",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 35,
+          "streams": {
+            "pcr": [
+              260
+            ],
+            "audio": [
+              {
+                "pid": 260,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 2739,
+                "type": 182,
+                "type_name": "Unknown B6",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4105,
+          "name": "Rock Radio",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 36,
+          "streams": {
+            "pcr": [
+              261
+            ],
+            "audio": [
+              {
+                "pid": 261,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "video": [
+              {
+                "pid": 1609,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4106,
+          "name": "Eska Rock",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 37,
+          "streams": {
+            "pcr": [
+              262
+            ],
+            "audio": [
+              {
+                "pid": 262,
+                "type": 4,
+                "type_name": "MPEG-2 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 730,
+                "type": 13,
+                "type_name": "Unknown 0D",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4107,
+          "name": "Radio Wielkopolska",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 39,
+          "streams": {
+            "pcr": [
+              60
+            ],
+            "audio": [
+              {
+                "pid": 60,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              },
+              {
+                "pid": 5961,
+                "type": 218,
+                "type_name": "DTS Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 4108,
+          "name": "Radio Bezpieczna Podroz",
+          "provider": "Cyfrowy Polsat S.A.",
+          "pmt_pid": 40,
+          "streams": {
+            "pcr": [
+              53
+            ],
+            "audio": [
+              {
+                "pid": 53,
+                "type": 3,
+                "type_name": "MPEG-1 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 5647,
+                "type": 136,
+                "type_name": "Unknown 88",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frequency": 586.0,
+      "system": "dvbt2",
+      "bandwidth": 8,
+      "services": [
+        {
+          "id": 40,
+          "name": "Alfa TVP",
+          "provider": "Emitel",
+          "pmt_pid": 801,
+          "streams": {
+            "pcr": [
+              802
+            ],
+            "video": [
+              {
+                "pid": 802,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              },
+              {
+                "pid": 7542,
+                "type": 27,
+                "type_name": "H.264/AVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 803,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 806,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 808,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 8011,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 42,
+          "name": "TVP Polonia",
+          "provider": "Emitel",
+          "pmt_pid": 901,
+          "streams": {
+            "pcr": [
+              902
+            ],
+            "video": [
+              {
+                "pid": 902,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 903,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 904,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "qaa",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 906,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 908,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 8003,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 1187,
+                "type": 32,
+                "type_name": "Unknown 20",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 54,
+          "name": "TVP Kobieta",
+          "provider": "Emitel",
+          "pmt_pid": 701,
+          "streams": {
+            "pcr": [
+              702
+            ],
+            "video": [
+              {
+                "pid": 702,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 703,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 706,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 708,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 8009,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 3024,
+                "type": 142,
+                "type_name": "Unknown 8E",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 55,
+          "name": "Belsat TV",
+          "provider": "Emitel",
+          "pmt_pid": 101,
+          "streams": {
+            "pcr": [
+              102
+            ],
+            "video": [
+              {
+                "pid": 102,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 103,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "bel",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 108,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 8012,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 4848,
+                "type": 9,
+                "type_name": "Unknown 09",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 61,
+          "name": "TVP Dokument",
+          "provider": "Emitel",
+          "pmt_pid": 601,
+          "streams": {
+            "pcr": [
+              602
+            ],
+            "video": [
+              {
+                "pid": 602,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 603,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 606,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 608,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 8002,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 2608,
+                "type": 98,
+                "type_name": "Unknown 62",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 62,
+          "name": "TVP Rozrywka",
+          "provider": "Emitel",
+          "pmt_pid": 501,
+          "streams": {
+            "pcr": [
+              502
+            ],
+            "video": [
+              {
+                "pid": 502,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 503,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 506,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 508,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 8005,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 7327,
+                "type": 21,
+                "type_name": "Unknown 15",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 66,
+          "name": "TVP Nauka",
+          "provider": "Emitel",
+          "pmt_pid": 401,
+          "streams": {
+            "pcr": [
+              402
+            ],
+            "video": [
+              {
+                "pid": 402,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 403,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 406,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 408,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 8007,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 3945,
+                "type": 80,
+                "type_name": "Unknown 50",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 83,
+          "name": "TVP World",
+          "provider": "Emitel",
+          "pmt_pid": 301,
+          "streams": {
+            "pcr": [
+              302
+            ],
+            "video": [
+              {
+                "pid": 302,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 303,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 304,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "qaa",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 308,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 8004,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 6678,
+                "type": 161,
+                "type_name": "Unknown A1",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "frequency": 650.0,
+      "system": "dvbt2",
+      "bandwidth": 8,
+      "services": [
+        {
+          "id": 27,
+          "name": "ESKA TV",
+          "provider": "Emitel",
+          "pmt_pid": 2701,
+          "streams": {
+            "pcr": [
+              2702
+            ],
+            "video": [
+              {
+                "pid": 2702,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 2703,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 2708,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 2705,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 47,
+                    "magazine": 7,
+                    "page": 14
+                  }
+                }
+              },
+              {
+                "pid": 2707,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 5857,
+                "type": 141,
+                "type_name": "Unknown 8D",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 28,
+          "name": "TTV",
+          "provider": "Emitel",
+          "pmt_pid": 2801,
+          "streams": {
+            "pcr": [
+              2802
+            ],
+            "video": [
+              {
+                "pid": 2802,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 2803,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 2804,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "org",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 2805,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "teletext": {
+                    "language": "pol",
+                    "type": 23,
+                    "magazine": 7,
+                    "page": 14
+                  }
+                }
+              },
+              {
+                "pid": 2806,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 4,
+                    "ancillary_page": 5
+                  }
+                }
+              },
+              {
+                "pid": 2807,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 2811,
+                "type": 12,
+                "type_name": "Unknown 0C",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 2810,
+                "type": 11,
+                "type_name": "Unknown 0B",
+                "category": "data",
+                "descriptors": {}
+              }
+            ],
+            "audio": [
+              {
+                "pid": 5934,
+                "type": 129,
+                "type_name": "A52/AC-3 Audio",
+                "category": "audio",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 29,
+          "name": "Polo TV",
+          "provider": "Emitel",
+          "pmt_pid": 2901,
+          "streams": {
+            "pcr": [
+              2902
+            ],
+            "video": [
+              {
+                "pid": 2902,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 2903,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 2907,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 2705,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 47,
+                    "magazine": 0,
+                    "page": 15
+                  }
+                }
+              },
+              {
+                "pid": 8110,
+                "type": 158,
+                "type_name": "Unknown 9E",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 30,
+          "name": "ANTENA HD",
+          "provider": "Emitel",
+          "pmt_pid": 3001,
+          "streams": {
+            "pcr": [
+              3002
+            ],
+            "video": [
+              {
+                "pid": 3002,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 3003,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 2836,
+                "type": 239,
+                "type_name": "Unknown EF",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 50,
+          "name": "TV Trwam",
+          "provider": "Emitel",
+          "pmt_pid": 5011,
+          "streams": {
+            "pcr": [
+              5012
+            ],
+            "video": [
+              {
+                "pid": 5012,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 5003,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 5008,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 5005,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "und",
+                    "type": 16,
+                    "magazine": 0,
+                    "page": 17
+                  }
+                }
+              },
+              {
+                "pid": 2823,
+                "type": 197,
+                "type_name": "Unknown C5",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 52,
+          "name": "Stopklatka TV",
+          "provider": "Emitel",
+          "pmt_pid": 5201,
+          "streams": {
+            "pcr": [
+              5202
+            ],
+            "video": [
+              {
+                "pid": 5202,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 5203,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 5204,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "org",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 5206,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "POL",
+                    "type": 16,
+                    "composition_page": 2,
+                    "ancillary_page": 2
+                  }
+                }
+              },
+              {
+                "pid": 5207,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 3852,
+                "type": 236,
+                "type_name": "Unknown EC",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 53,
+          "name": "Fokus TV",
+          "provider": "Emitel",
+          "pmt_pid": 5301,
+          "streams": {
+            "pcr": [
+              5302
+            ],
+            "video": [
+              {
+                "pid": 5302,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 5303,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 5308,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 5307,
+                "type": 5,
+                "type_name": "Private Sections",
+                "category": "data",
+                "descriptors": {}
+              },
+              {
+                "pid": 2705,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0,
+                  "teletext": {
+                    "language": "pol",
+                    "type": 47,
+                    "magazine": 1,
+                    "page": 15
+                  }
+                }
+              },
+              {
+                "pid": 7736,
+                "type": 14,
+                "type_name": "Unknown 0E",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        },
+        {
+          "id": 70,
+          "name": "Wydarzenia 24",
+          "provider": "Emitel",
+          "pmt_pid": 7001,
+          "streams": {
+            "pcr": [
+              7002
+            ],
+            "video": [
+              {
+                "pid": 7002,
+                "type": 36,
+                "type_name": "H.265/HEVC Video",
+                "category": "video",
+                "descriptors": {}
+              }
+            ],
+            "data": [
+              {
+                "pid": 7003,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 7008,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "language": "aux",
+                  "audio_type": 3
+                }
+              },
+              {
+                "pid": 7006,
+                "type": 6,
+                "type_name": "Private PES Data",
+                "category": "data",
+                "descriptors": {
+                  "subtitle": {
+                    "language": "pol",
+                    "type": 16,
+                    "composition_page": 0,
+                    "ancillary_page": 0
+                  },
+                  "language": "pol",
+                  "audio_type": 0
+                }
+              },
+              {
+                "pid": 2881,
+                "type": 107,
+                "type_name": "Unknown 6B",
+                "category": "data",
+                "descriptors": {}
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

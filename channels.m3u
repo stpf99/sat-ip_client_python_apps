@@ -1,0 +1,171 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="57",Metro
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,7744,8061,8062,8063,8064,8065,8067
+#EXTINF:-1 tvg-id="58",Zoom TV
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,7997,8081,8082,8083,8084,8086,8087
+#EXTINF:-1 tvg-id="59",Nowa TV
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,5560,8101,8102,8103,8105,8107,8108
+#EXTINF:-1 tvg-id="60",WP
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,1664,8121,8122,8123,8124,8125,8127,8128
+#EXTINF:-1 tvg-id="72",Republika
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,1288,7201,7202,7203,7207
+#EXTINF:-1 tvg-id="73",wPolsce24
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,5837,7301,7302,7303,7306,7307
+#EXTINF:-1 tvg-id="86",CDA Premium
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,3248,8142,8161,8167
+#EXTINF:-1 tvg-id="87",Sklep Kapitan.pl
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,6591,8051,8057,8142
+#EXTINF:-1 tvg-id="95",test 95
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,2010,8071,8142
+#EXTINF:-1 tvg-id="96",test 96
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,4881,8091,8142
+#EXTINF:-1 tvg-id="97",test 97
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,7308,8111,8142
+#EXTINF:-1 tvg-id="98",EmiRadio
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,2696,8131,8137,8142
+#EXTINF:-1 tvg-id="99",EmiTV
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,3784,8141,8142,8147
+#EXTINF:-1 tvg-id="211",test 211
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,211,4196,8142
+#EXTINF:-1 tvg-id="212",test 212
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,212,8105,8142
+#EXTINF:-1 tvg-id="213",test 213
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,213,4148,8142
+#EXTINF:-1 tvg-id="214",test 214
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,146,214,8142
+#EXTINF:-1 tvg-id="215",test 215
+http://192.168.1.1:8080/?freq=184.5&msys=dvbt&bw=7&tmode=8k&gi=1/4&pids=0,215,3855,8142
+#EXTINF:-1 tvg-id="1",TVP1
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,101,102,103,104,105,106,107,108,3727
+#EXTINF:-1 tvg-id="2",TVP2
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,201,202,203,204,205,206,207,208,2120
+#EXTINF:-1 tvg-id="19",TVP3 Rzeszow
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,1901,1902,1903,1905,1906,1907,1908,4881
+#EXTINF:-1 tvg-id="31",TVP Kultura
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,3101,3102,3103,3104,3105,3106,3107,3108,3109,3628
+#EXTINF:-1 tvg-id="32",TVP Historia
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,501,502,503,505,506,507,508,3298
+#EXTINF:-1 tvg-id="33",TVP Sport
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,3301,3302,3303,3306,3307,3308,6458
+#EXTINF:-1 tvg-id="35",TVP Info
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,3501,3502,3503,3506,3507,4308
+#EXTINF:-1 tvg-id="51",TVP ABC
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,570,5101,5102,5103,5104,5106,5107,5108
+#EXTINF:-1 tvg-id="88",TVP GO
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,6962,7702,7707,7711
+#EXTINF:-1 tvg-id="91",TVP World
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,4985,7702,7712,8107
+#EXTINF:-1 tvg-id="92",TVP ABC 2
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,7702,7713,7907,7958
+#EXTINF:-1 tvg-id="93",TVP Historia 2
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,3432,7702,7714,7807
+#EXTINF:-1 tvg-id="94",TVP Kultura 2
+http://192.168.1.1:8080/?freq=538.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,2475,7702,7715,8007
+#EXTINF:-1 tvg-id="3",Polsat
+http://192.168.1.1:8080/?freq=562.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,101,102,103,105,106,107,108,3744
+#EXTINF:-1 tvg-id="4",TVN
+http://192.168.1.1:8080/?freq=562.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,201,202,203,204,205,206,207,210,211,5713
+#EXTINF:-1 tvg-id="5",TV4
+http://192.168.1.1:8080/?freq=562.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,301,302,303,305,307,308,309,7745
+#EXTINF:-1 tvg-id="6",TV Puls
+http://192.168.1.1:8080/?freq=562.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,401,402,403,405,407,408,409,7089
+#EXTINF:-1 tvg-id="23",TVN 7
+http://192.168.1.1:8080/?freq=562.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,501,502,503,504,505,506,507,510,511,4223
+#EXTINF:-1 tvg-id="24",PULS 2
+http://192.168.1.1:8080/?freq=562.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,601,602,603,605,607,608,1981
+#EXTINF:-1 tvg-id="25",TV6
+http://192.168.1.1:8080/?freq=562.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,305,701,702,703,707,708,4522
+#EXTINF:-1 tvg-id="26",Super Polsat
+http://192.168.1.1:8080/?freq=562.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,105,801,802,803,806,807,808,4106
+#EXTINF:-1 tvg-id="4109",Radio Rekord FM
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,41,56,3350
+#EXTINF:-1 tvg-id="4110",Radio Kolor 103FM
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,42,57,5404
+#EXTINF:-1 tvg-id="4111",Radio Kaszebe FM
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,43,256,3754
+#EXTINF:-1 tvg-id="4112",Radio Jasna Gora
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,45,59,3120
+#EXTINF:-1 tvg-id="8189",Polsat  HbbTV
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,61,67,179,257
+#EXTINF:-1 tvg-id="8190",Newland
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,5491,8189,8190
+#EXTINF:-1 tvg-id="110",Polsat Sport 1
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,112,212,312,4178
+#EXTINF:-1 tvg-id="111",Polsat Sport 2
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,116,216,266,316
+#EXTINF:-1 tvg-id="112",Eurosport 1
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,113,132,213,313
+#EXTINF:-1 tvg-id="113",Eurosport 2
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,119,219,319,6718
+#EXTINF:-1 tvg-id="114",Eleven Sports 1
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,114,214,314,3665
+#EXTINF:-1 tvg-id="115",Eleven Sports 2
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,117,217,317,4500
+#EXTINF:-1 tvg-id="116",TVN TURBO HD
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,115,215,315,2690
+#EXTINF:-1 tvg-id="117",TVN Style
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,121,221,321,1877
+#EXTINF:-1 tvg-id="118",Polsat News Polityka
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,118,218,318,2890
+#EXTINF:-1 tvg-id="119",Polsat News HD
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,110,210,310,3854
+#EXTINF:-1 tvg-id="120",TVN 24 HD
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,120,220,320,6503
+#EXTINF:-1 tvg-id="4096",RMF FM
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,400,3118,4096
+#EXTINF:-1 tvg-id="4097",RMF MAXXX
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,401,4097,7982
+#EXTINF:-1 tvg-id="4098",Antyradio
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,402,4098,4960
+#EXTINF:-1 tvg-id="4099",Norda FM
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,403,1584,4099
+#EXTINF:-1 tvg-id="4100",Radio ZET
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,404,2353,4100
+#EXTINF:-1 tvg-id="4101",Zlote Przeboje
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,405,3335,4101
+#EXTINF:-1 tvg-id="4102",Radio Plus
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,33,258,996
+#EXTINF:-1 tvg-id="4103",VOX FM
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,34,263,1171
+#EXTINF:-1 tvg-id="4104",TOK FM
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,35,260,2739
+#EXTINF:-1 tvg-id="4105",Rock Radio
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,36,261,1609
+#EXTINF:-1 tvg-id="4106",Eska Rock
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,37,262,730
+#EXTINF:-1 tvg-id="4107",Radio Wielkopolska
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,39,60,5961
+#EXTINF:-1 tvg-id="4108",Radio Bezpieczna Podroz
+http://192.168.1.1:8080/?freq=554.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,40,53,5647
+#EXTINF:-1 tvg-id="40",Alfa TVP
+http://192.168.1.1:8080/?freq=586.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,801,802,803,806,808,7542,8011
+#EXTINF:-1 tvg-id="42",TVP Polonia
+http://192.168.1.1:8080/?freq=586.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,901,902,903,904,906,908,1187,8003
+#EXTINF:-1 tvg-id="54",TVP Kobieta
+http://192.168.1.1:8080/?freq=586.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,701,702,703,706,708,3024,8009
+#EXTINF:-1 tvg-id="55",Belsat TV
+http://192.168.1.1:8080/?freq=586.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,101,102,103,108,4848,8012
+#EXTINF:-1 tvg-id="61",TVP Dokument
+http://192.168.1.1:8080/?freq=586.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,601,602,603,606,608,2608,8002
+#EXTINF:-1 tvg-id="62",TVP Rozrywka
+http://192.168.1.1:8080/?freq=586.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,501,502,503,506,508,7327,8005
+#EXTINF:-1 tvg-id="66",TVP Nauka
+http://192.168.1.1:8080/?freq=586.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,401,402,403,406,408,3945,8007
+#EXTINF:-1 tvg-id="83",TVP World
+http://192.168.1.1:8080/?freq=586.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,301,302,303,304,308,6678,8004
+#EXTINF:-1 tvg-id="27",ESKA TV
+http://192.168.1.1:8080/?freq=650.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,2701,2702,2703,2705,2707,2708,5857
+#EXTINF:-1 tvg-id="28",TTV
+http://192.168.1.1:8080/?freq=650.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,2801,2802,2803,2804,2805,2806,2807,2810,2811,5934
+#EXTINF:-1 tvg-id="29",Polo TV
+http://192.168.1.1:8080/?freq=650.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,2705,2901,2902,2903,2907,8110
+#EXTINF:-1 tvg-id="30",ANTENA HD
+http://192.168.1.1:8080/?freq=650.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,2836,3001,3002,3003
+#EXTINF:-1 tvg-id="50",TV Trwam
+http://192.168.1.1:8080/?freq=650.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,2823,5003,5005,5008,5011,5012
+#EXTINF:-1 tvg-id="52",Stopklatka TV
+http://192.168.1.1:8080/?freq=650.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,3852,5201,5202,5203,5204,5206,5207
+#EXTINF:-1 tvg-id="53",Fokus TV
+http://192.168.1.1:8080/?freq=650.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,2705,5301,5302,5303,5307,5308,7736
+#EXTINF:-1 tvg-id="70",Wydarzenia 24
+http://192.168.1.1:8080/?freq=650.0&msys=dvbt2&bw=8&tmode=8k&gi=1/4&pids=0,2881,7001,7002,7003,7006,7008
