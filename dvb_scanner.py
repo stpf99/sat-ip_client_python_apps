@@ -8,6 +8,7 @@ DVB-T/T2 Scanner w Pythonie - WERSJA ULEPSZONA Z PEŁNYM WYKRYWANIEM PIDÓW
 - Ulepszone wykrywanie nazw kanałów z SDT
 - Automatyczne wykrywanie typu kodowania audio
 - Obsługa multipleksów z wieloma usługami
+- Obsługa trybów HTTP i RTSP z konfigurowalnymi portami
 """
 
 import sys
@@ -463,9 +464,10 @@ class MultiplexScanner:
     PID_SDT = 0x0011
     PID_ALL = 8192
     
-    def __init__(self, host='192.168.1.1', port=8080):
+    def __init__(self, host='192.168.1.1', port=8080, protocol_mode='http'):
         self.host = host
         self.port = port
+        self.protocol_mode = protocol_mode.lower()
         self.base_url = f"http://{self.host}:{self.port}"
     
     def scan_frequency(self, freq_mhz, msys='dvbt2', bw=8, tmode='8k', gi='1/4', 
@@ -841,7 +843,11 @@ class MultiplexScanner:
         }
         
         query = '&'.join([f"{k}={v}" for k, v in params.items()])
-        return f"http://{self.host}:{self.port}/?{query}"
+        
+        if self.protocol_mode == 'rtsp':
+            return f"rtsp://{self.host}:{self.port}/?{query}"
+        else:  # http
+            return f"http://{self.host}:{self.port}/?{query}"
 
 
 # ============================================================================
@@ -861,8 +867,8 @@ class AutoScanner:
         for ch in range(21, 70)
     }
     
-    def __init__(self, host='192.168.1.1', port=8080):
-        self.scanner = MultiplexScanner(host, port)
+    def __init__(self, host='192.168.1.1', port=8080, protocol_mode='http'):
+        self.scanner = MultiplexScanner(host, port, protocol_mode)
         self.found_muxes = []
     
     def scan_all(self, vhf=True, uhf=True, msys='dvbt2', 
@@ -926,7 +932,7 @@ class AutoScanner:
         return self.found_muxes
     
     def export_to_m3u(self, output_file='channels.m3u'):
-        """Eksportuje znalezione kanały do M3U z pełnymi listami PIDów"""
+        """Eksportuje znalezione kanały do M3U z odpowiednim protokołem i portem"""
         if not self.found_muxes:
             print("Brak multipleksów do eksportu")
             return
@@ -946,7 +952,7 @@ class AutoScanner:
                     name = service['name']
                     pmt_pid = service.get('pmt_pid', 0)
                     
-                    # Zbierz wszystkie PIDy dla tej usługi
+                    # Zbierz wszystkie PIDy dla tej usługi (bez stałych PIDów EPG)
                     all_pids = set()
                     
                     # Dodaj podstawowe PIDy
@@ -962,18 +968,24 @@ class AutoScanner:
                             if isinstance(streams, list):
                                 for stream in streams:
                                     if isinstance(stream, dict):
-                                        all_pids.add(stream.get('pid', 0))
+                                        pid = stream.get('pid', 0)
+                                        if pid > 0:  # Tylko prawidłowe PIDy
+                                            all_pids.add(pid)
                                     else:
-                                        all_pids.add(stream)
+                                        if stream > 0:  # Tylko prawidłowe PIDy
+                                            all_pids.add(stream)
                             elif isinstance(streams, dict):
                                 for stream in streams.values():
                                     if isinstance(stream, dict):
-                                        all_pids.add(stream.get('pid', 0))
+                                        pid = stream.get('pid', 0)
+                                        if pid > 0:  # Tylko prawidłowe PIDy
+                                            all_pids.add(pid)
                                     else:
-                                        all_pids.add(stream)
+                                        if stream > 0:  # Tylko prawidłowe PIDy
+                                            all_pids.add(stream)
                     
-                    # Dodaj standardowe PIDy EPG
-                    all_pids.update([16, 17, 18, 20])  # EIT, SDT, TDT, NIT
+                    # NIE dodajemy stałych PIDów EPG (16, 17, 18, 20) do każdego kanału!
+                    # Są one wspólne dla całego multipleksu i nie powinny być powtarzane.
                     
                     # Usuń PID 0 z listy (już dodany na początku)
                     all_pids.discard(0)
@@ -984,13 +996,14 @@ class AutoScanner:
                     # Dodaj 0 na początku listy
                     pids_str = ','.join(['0'] + [str(p) for p in pids_list])
                     
-                    # Zapisz do M3U
+                    # Zapisz do M3U z tvg-id
                     f.write(f'#EXTINF:-1 tvg-id="{service_id}",{name}\n')
                     
-                    # Buduj URL SAT>IP
-                    url = (f"rtsp://{self.scanner.host}:554/"
-                           f"?freq={freq}&msys={msys}&bw={bw}&tmode={tmode}&gi={gi}"
-                           f"&pids={pids_str}")
+                    # Buduj URL z odpowiednim protokołem i portem
+                    if self.scanner.protocol_mode == 'rtsp':
+                        url = f"rtsp://{self.scanner.host}:{self.scanner.port}/?freq={freq}&msys={msys}&bw={bw}&tmode={tmode}&gi={gi}&pids={pids_str}"
+                    else:  # http
+                        url = f"http://{self.scanner.host}:{self.scanner.port}/?freq={freq}&msys={msys}&bw={bw}&tmode={tmode}&gi={gi}&pids={pids_str}"
                     
                     f.write(f'{url}\n')
         
@@ -1000,6 +1013,9 @@ class AutoScanner:
         total_services = sum(len(mux['services']) for mux in self.found_muxes)
         print(f"   Multipleksy: {len(self.found_muxes)}")
         print(f"   Stacje: {total_services}")
+        print(f"   Protokół: {self.scanner.protocol_mode.upper()}")
+        print(f"   Port: {self.scanner.port}")
+        print(f"   Uwaga: Pominięto stałe PIDy EPG (16,17,18,20) - są wspólne dla multipleksu")
         
         # Zapisz szczegółowe informacje o PIDach do pliku JSON
         json_file = output_file.replace('.m3u', '_pids.json')
@@ -1009,6 +1025,8 @@ class AutoScanner:
         """Eksportuje szczegółowe informacje o PIDach do pliku JSON"""
         pids_info = {
             'scan_time': datetime.now().isoformat(),
+            'protocol': self.scanner.protocol_mode,
+            'port': self.scanner.port,
             'multiplexes': []
         }
         
@@ -1045,8 +1063,8 @@ class AutoScanner:
 class ConfigScanner:
     """Scanner z pliku konfiguracyjnego (format Linux DVB)"""
     
-    def __init__(self, host='192.168.1.1', port=8080):
-        self.scanner = MultiplexScanner(host, port)
+    def __init__(self, host='192.168.1.1', port=8080, protocol_mode='http'):
+        self.scanner = MultiplexScanner(host, port, protocol_mode)
         self.found_muxes = []
     
     def parse_config(self, config_file):
@@ -1148,7 +1166,7 @@ class ConfigScanner:
         return self.found_muxes
     
     def export_to_m3u(self, output_file='channels.m3u'):
-        """Eksportuje znalezione kanały do M3U z pełnymi listami PIDów"""
+        """Eksportuje znalezione kanały do M3U z odpowiednim protokołem i portem"""
         if not self.found_muxes:
             print("Brak multipleksów do eksportu")
             return
@@ -1168,7 +1186,7 @@ class ConfigScanner:
                     name = service['name']
                     pmt_pid = service.get('pmt_pid', 0)
                     
-                    # Zbierz wszystkie PIDy dla tej usługi
+                    # Zbierz wszystkie PIDy dla tej usługi (bez stałych PIDów EPG)
                     all_pids = set()
                     
                     # Dodaj podstawowe PIDy
@@ -1184,18 +1202,24 @@ class ConfigScanner:
                             if isinstance(streams, list):
                                 for stream in streams:
                                     if isinstance(stream, dict):
-                                        all_pids.add(stream.get('pid', 0))
+                                        pid = stream.get('pid', 0)
+                                        if pid > 0:  # Tylko prawidłowe PIDy
+                                            all_pids.add(pid)
                                     else:
-                                        all_pids.add(stream)
+                                        if stream > 0:  # Tylko prawidłowe PIDy
+                                            all_pids.add(stream)
                             elif isinstance(streams, dict):
                                 for stream in streams.values():
                                     if isinstance(stream, dict):
-                                        all_pids.add(stream.get('pid', 0))
+                                        pid = stream.get('pid', 0)
+                                        if pid > 0:  # Tylko prawidłowe PIDy
+                                            all_pids.add(pid)
                                     else:
-                                        all_pids.add(stream)
+                                        if stream > 0:  # Tylko prawidłowe PIDy
+                                            all_pids.add(stream)
                     
-                    # Dodaj standardowe PIDy EPG
-                    all_pids.update([16, 17, 18, 20])  # EIT, SDT, TDT, NIT
+                    # NIE dodajemy stałych PIDów EPG (16, 17, 18, 20) do każdego kanału!
+                    # Są one wspólne dla całego multipleksu i nie powinny być powtarzane.
                     
                     # Usuń PID 0 z listy (już dodany na początku)
                     all_pids.discard(0)
@@ -1206,13 +1230,14 @@ class ConfigScanner:
                     # Dodaj 0 na początku listy
                     pids_str = ','.join(['0'] + [str(p) for p in pids_list])
                     
-                    # Zapisz do M3U
+                    # Zapisz do M3U z tvg-id
                     f.write(f'#EXTINF:-1 tvg-id="{service_id}",{name}\n')
                     
-                    # Buduj URL SAT>IP
-                    url = (f"rtsp://{self.scanner.host}:{self.scanner.port}/"
-                           f"?freq={freq}&msys={msys}&bw={bw}&tmode={tmode}&gi={gi}"
-                           f"&pids={pids_str}")
+                    # Buduj URL z odpowiednim protokołem i portem
+                    if self.scanner.protocol_mode == 'rtsp':
+                        url = f"rtsp://{self.scanner.host}:{self.scanner.port}/?freq={freq}&msys={msys}&bw={bw}&tmode={tmode}&gi={gi}&pids={pids_str}"
+                    else:  # http
+                        url = f"http://{self.scanner.host}:{self.scanner.port}/?freq={freq}&msys={msys}&bw={bw}&tmode={tmode}&gi={gi}&pids={pids_str}"
                     
                     f.write(f'{url}\n')
         
@@ -1222,6 +1247,9 @@ class ConfigScanner:
         total_services = sum(len(mux['services']) for mux in self.found_muxes)
         print(f"   Multipleksy: {len(self.found_muxes)}")
         print(f"   Stacje: {total_services}")
+        print(f"   Protokół: {self.scanner.protocol_mode.upper()}")
+        print(f"   Port: {self.scanner.port}")
+        print(f"   Uwaga: Pominięto stałe PIDy EPG (16,17,18,20) - są wspólne dla multipleksu")
         
         # Zapisz szczegółowe informacje o PIDach do pliku JSON
         json_file = output_file.replace('.m3u', '_pids.json')
@@ -1231,6 +1259,8 @@ class ConfigScanner:
         """Eksportuje szczegółowe informacje o PIDach do pliku JSON"""
         pids_info = {
             'scan_time': datetime.now().isoformat(),
+            'protocol': self.scanner.protocol_mode,
+            'port': self.scanner.port,
             'multiplexes': []
         }
         
@@ -1271,23 +1301,17 @@ def main():
         epilog="""
 Przykłady użycia:
 
-  # Autoskan pełnego pasma VHF+UHF (DVB-T2)
-  %(prog)s --auto --vhf --uhf -o channels.m3u
+  # Autoskan pełnego pasma VHF+UHF (DVB-T2) - tryb RTSP
+  %(prog)s --auto --vhf --uhf -p 554 --protocol-mode rtsp -o channels.m3u
   
-  # Autoskan tylko UHF, DVB-T i DVB-T2
-  %(prog)s --auto --uhf --system both -o channels.m3u
+  # Autoskan pełnego pasma VHF+UHF (DVB-T2) - tryb HTTP
+  %(prog)s --auto --vhf --uhf -p 8080 --protocol-mode http -o channels.m3u
   
-  # Skanowanie z pliku konfiguracyjnego
-  %(prog)s --config pl-Rzeszow_Baranowka -o channels.m3u
+  # Skanowanie z pliku konfiguracyjnego - tryb RTSP
+  %(prog)s --config pl-Rzeszow_Baranowka -p 554 --protocol-mode rtsp -o channels.m3u
   
-  # Szybkie skanowanie (krótsze timeouty)
-  %(prog)s --auto --uhf --detect-time 2 --scan-time 8
-  
-  # Dokładne skanowanie (dłuższe timeouty)
-  %(prog)s --config channels.conf --detect-time 5 --scan-time 20
-  
-  # Zdalny serwer
-  %(prog)s --auto --uhf -a 192.168.1.100:8080
+  # Zdalny serwer - tryb HTTP
+  %(prog)s --auto --uhf -a 192.168.1.100:8080 --protocol-mode http
         """
     )
     
@@ -1336,7 +1360,7 @@ Przykłady użycia:
         help='Czas pełnego skanu w sekundach (domyślnie: 10)'
     )
     
-    # Serwer
+    # Serwer i protokół
     parser.add_argument(
         '-H', '--host',
         default='192.168.1.1',
@@ -1346,7 +1370,13 @@ Przykłady użycia:
         '-p', '--port',
         type=int,
         default=8080,
-        help='Port HTTP serwera SAT>IP (domyślnie: 8080)'
+        help='Port serwera SAT>IP (domyślnie: 8080)'
+    )
+    parser.add_argument(
+        '--protocol-mode',
+        choices=['http', 'rtsp'],
+        default='http',
+        help='Tryb protokołu: http lub rtsp (domyślnie: http)'
     )
     parser.add_argument(
         '-a', '--address',
@@ -1383,6 +1413,7 @@ Przykłady użycia:
     print("  DVB-T/T2 SCANNER - PEŁNE WYKRYWANIE PIDÓW")
     print("=" * 70)
     print(f"🌐 Serwer: {host}:{port}")
+    print(f"📡 Tryb: {args.protocol_mode.upper()}")
     
     # Tryb autoskan
     if args.auto:
@@ -1390,7 +1421,7 @@ Przykłady użycia:
             print("\n✗ Dla --auto musisz wybrać --vhf i/lub --uhf")
             sys.exit(1)
         
-        scanner = AutoScanner(host, port)
+        scanner = AutoScanner(host, port, args.protocol_mode)
         
         muxes = scanner.scan_all(
             vhf=args.vhf,
@@ -1413,7 +1444,7 @@ Przykłady użycia:
             print(f"\n✗ Plik nie istnieje: {args.config}")
             sys.exit(1)
         
-        scanner = ConfigScanner(host, port)
+        scanner = ConfigScanner(host, port, args.protocol_mode)
         
         muxes = scanner.scan_from_config(
             args.config,
